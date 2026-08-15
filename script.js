@@ -1,56 +1,105 @@
+const music = document.getElementById("weddingMusic");
 const musicBtn = document.getElementById("musicBtn");
 const musicIcon = document.getElementById("musicIcon");
-const audio = document.getElementById("weddingMusic");
-const proceedBtn = document.getElementById("proceedBtn");
 
 
-/* ==========================
-   MUSIC CONTROL
-========================== */
+// =====================================
+// MUSIC BUTTON
+// =====================================
+
+function updateMusicButton() {
+
+  if (music.paused) {
+
+    musicIcon.textContent = "▶";
+
+    musicBtn.setAttribute(
+      "aria-label",
+      "Play wedding music"
+    );
+
+    musicBtn.setAttribute(
+      "aria-pressed",
+      "false"
+    );
+
+    musicBtn.classList.remove("playing");
+
+  } else {
+
+    musicIcon.textContent = "❚❚";
+
+    musicBtn.setAttribute(
+      "aria-label",
+      "Pause wedding music"
+    );
+
+    musicBtn.setAttribute(
+      "aria-pressed",
+      "true"
+    );
+
+    musicBtn.classList.add("playing");
+
+  }
+
+}
+
+
+// =====================================
+// PLAY / PAUSE
+// =====================================
 
 musicBtn.addEventListener("click", async () => {
 
   try {
 
-    if (audio.paused) {
+    if (music.paused) {
 
-      await audio.play();
-
-      musicIcon.textContent = "❚❚";
-
-      musicBtn.classList.add("playing");
+      await music.play();
 
     } else {
 
-      audio.pause();
-
-      musicIcon.textContent = "♫";
-
-      musicBtn.classList.remove("playing");
+      music.pause();
 
     }
 
+    updateMusicButton();
+
   } catch (error) {
 
-    console.log("Music could not be played:", error);
+    console.log(
+      "Music could not be played:",
+      error
+    );
 
   }
 
 });
 
 
-/* ==========================
-   PROCEED BUTTON
-========================== */
+// =====================================
+// KEEP BUTTON IN SYNC
+// =====================================
 
-proceedBtn.addEventListener("click", () => {
+music.addEventListener(
+  "play",
+  updateMusicButton
+);
 
-  document.querySelector(".arch").classList.add("leaving");
+music.addEventListener(
+  "pause",
+  updateMusicButton
+);
 
-  setTimeout(() => {
+music.addEventListener(
+  "ended",
+  updateMusicButton
+);
 
-    window.location.href = "details.html";
 
-  }, 700);
+// =====================================
+// INITIAL STATE
+// =====================================
 
-});
+updateMusicButton();
