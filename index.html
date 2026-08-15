@@ -21,100 +21,134 @@
 
   <main class="invitation">
 
-  <!-- Animated background particles -->
-  <div class="particles">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-
-  <div class="overlay"></div>
-
-  <!-- Music Button -->
-  <button
-    class="music-button"
-    id="musicBtn"
-    aria-label="Play or pause music"
-  >
-    <span id="musicIcon">♫</span>
-  </button>
-
-  <!-- Decorative ornaments -->
-  <div class="ornament top">
-    ❧────────────❧
-  </div>
-
-  <div class="ornament bottom">
-    ❧────────────❧
-  </div>
-
-  <!-- Elegant Wedding Invitation -->
-  <section class="content">
-
-    <div class="welcome-text">
-      <span>AN ELEGANT WEDDING INVITATION</span>
+    <!-- Animated background particles -->
+    <div class="particles">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
 
-    <div class="arch">
+    <div class="overlay"></div>
 
-      <div class="inner">
 
-        <p class="eyebrow">
-          WITH JOY IN OUR HEARTS
-        </p>
+    <!-- =========================
+         MUSIC BUTTON
+         ========================= -->
 
-        <h1>Me</h1>
+    <button
+      class="music-button"
+      id="musicBtn"
+      type="button"
+      aria-label="Play wedding music"
+      aria-pressed="false"
+    >
+      <span
+        id="musicIcon"
+        aria-hidden="true"
+      >
+        ▶
+      </span>
 
-        <div class="ampersand">
-          &amp;
+      <span class="music-label">
+        MUSIC
+      </span>
+    </button>
+
+
+    <!-- Decorative ornaments -->
+
+    <div class="ornament top">
+      ❧────────────❧
+    </div>
+
+    <div class="ornament bottom">
+      ❧────────────❧
+    </div>
+
+
+    <!-- Elegant Wedding Invitation -->
+
+    <section class="content">
+
+      <div class="welcome-text">
+        <span>
+          AN ELEGANT WEDDING INVITATION
+        </span>
+      </div>
+
+
+      <div class="arch">
+
+        <div class="inner">
+
+          <p class="eyebrow">
+            WITH JOY IN OUR HEARTS
+          </p>
+
+          <h1>
+            Me
+          </h1>
+
+          <div class="ampersand">
+            &amp;
+          </div>
+
+          <h1>
+            You
+          </h1>
+
+          <div class="divider">
+            ──── ♡ ────
+          </div>
+
+          <p class="date">
+            26 . 09 . 2026
+          </p>
+
+          <p class="tagline">
+            Two hearts. One beautiful beginning.
+          </p>
+
+
+          <a
+            href="invitation.html"
+            class="proceed"
+          >
+            PROCEED
+            <span>→</span>
+          </a>
+
         </div>
-
-        <h1>You</h1>
-
-        <div class="divider">
-          ──── ♡ ────
-        </div>
-
-        <p class="date">
-          26 . 09 . 2026
-        </p>
-
-        <p class="tagline">
-          Two hearts. One beautiful beginning.
-        </p>
-
-        <a href="invitation.html" class="proceed">
-    PROCEED
-    <span>→</span>
-</a>
 
       </div>
 
-    </div>
+    </section>
 
-  </section>
 
-  <footer>
-    © 2026 Me &amp; You. All rights reserved.
-  </footer>
+    <footer>
+      © 2026 Me &amp; You. All rights reserved.
+    </footer>
 
   </main>
 
 
-  <!-- Wedding Music -->
+  <!-- =========================
+       WEDDING MUSIC
+       ========================= -->
+
   <audio
     id="weddingMusic"
     src="dondo.mp3"
     loop
-    preload="auto">
-  </audio>
+    preload="auto"
+  ></audio>
 
 
   <script src="script.js"></script>
