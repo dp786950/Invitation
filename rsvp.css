@@ -1,0 +1,587 @@
+:root {
+  --brown-950: #241008;
+  --brown-900: #321308;
+  --brown-800: #4b1d0b;
+  --brown-700: #6b2c10;
+  --brown-600: #7e3512;
+  --gold: #f5d38c;
+  --gold-soft: #ffe5a8;
+  --cream: #fff3d3;
+  --glass: rgba(105, 75, 61, 0.58);
+  --glass-border: rgba(255, 239, 207, 0.28);
+  --input: rgba(155, 132, 121, 0.40);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: "DM Sans", system-ui, sans-serif;
+  color: var(--cream);
+  background: #2d1006;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.rsvp-page {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 24px 80px;
+  background:
+    radial-gradient(circle at 18% 7%, rgba(172, 83, 28, 0.32), transparent 24%),
+    radial-gradient(circle at 88% 76%, rgba(125, 57, 18, 0.30), transparent 26%),
+    radial-gradient(circle at 52% 40%, rgba(119, 49, 15, 0.22), transparent 48%),
+    linear-gradient(120deg, #3a1408 0%, #6a280c 48%, #3a1408 100%);
+}
+
+.rsvp-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  opacity: 0.23;
+  background-image:
+    radial-gradient(circle at 10% 20%, transparent 0 8px, rgba(255, 220, 154, .16) 9px 10px, transparent 11px),
+    radial-gradient(circle at 32% 54%, transparent 0 10px, rgba(255, 220, 154, .13) 11px 12px, transparent 13px),
+    radial-gradient(circle at 74% 29%, transparent 0 9px, rgba(255, 220, 154, .14) 10px 11px, transparent 12px),
+    radial-gradient(circle at 88% 60%, transparent 0 11px, rgba(255, 220, 154, .12) 12px 13px, transparent 14px);
+  background-size: 230px 190px, 290px 240px, 260px 220px, 320px 250px;
+}
+
+.rsvp-page::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom, rgba(20, 7, 2, .16), transparent 18%, transparent 78%, rgba(20, 7, 2, .28)),
+    radial-gradient(ellipse at center, transparent 35%, rgba(20, 7, 2, .34) 100%);
+}
+
+.hero {
+  text-align: center;
+  padding-top: clamp(22px, 3.2vw, 46px);
+  margin-bottom: 60px;
+  z-index: 2;
+}
+
+.hero h1 {
+  margin: 0;
+  color: var(--gold-soft);
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(3.3rem, 6.2vw, 5.3rem);
+  font-weight: 400;
+  line-height: .95;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, .28);
+}
+
+.date {
+  margin: 22px 0 0;
+  color: #fff7e5;
+  font-size: clamp(.92rem, 1.7vw, 1.25rem);
+  font-weight: 700;
+  letter-spacing: .38em;
+  text-transform: none;
+}
+
+.rsvp-card {
+  position: relative;
+  width: min(100%, 500px);
+  padding: 38px 34px 40px;
+  border: 1px solid var(--glass-border);
+  border-radius: 27px;
+  background: linear-gradient(145deg, rgba(104, 76, 63, .64), rgba(76, 48, 37, .68));
+  box-shadow:
+    0 28px 70px rgba(18, 5, 1, .34),
+    inset 0 1px 0 rgba(255, 255, 255, .10);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 3;
+}
+
+.card-glow {
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(255, 226, 169, .13), transparent 25%, transparent 72%, rgba(255, 226, 169, .08));
+}
+
+.card-header {
+  position: relative;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.card-header h2 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(2rem, 4vw, 2.55rem);
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -.04em;
+}
+
+.card-header p {
+  margin: 14px 0 0;
+  color: #fff7ee;
+  font-size: .92rem;
+  font-weight: 600;
+}
+
+form {
+  position: relative;
+}
+
+.field {
+  margin-bottom: 25px;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  border: 1px solid rgba(255, 235, 211, .31);
+  outline: none;
+  color: #fff;
+  background: var(--input);
+  border-radius: 17px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, .07);
+  transition: border-color .2s ease, background .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+
+input,
+select {
+  height: 59px;
+  padding: 0 24px;
+}
+
+textarea {
+  min-height: 112px;
+  padding: 18px 24px;
+  resize: vertical;
+}
+
+input::placeholder,
+textarea::placeholder,
+select:invalid {
+  color: rgba(255, 249, 239, .76);
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 52px;
+  cursor: pointer;
+}
+
+.select-wrap {
+  position: relative;
+}
+
+.select-wrap::after {
+  content: "⌄";
+  position: absolute;
+  right: 19px;
+  top: 50%;
+  transform: translateY(-56%);
+  color: #fff;
+  font-size: 1.3rem;
+  pointer-events: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: rgba(255, 224, 165, .75);
+  background: rgba(170, 145, 133, .48);
+  box-shadow: 0 0 0 4px rgba(245, 211, 140, .10);
+}
+
+button {
+  width: 100%;
+  min-height: 62px;
+  border: 0;
+  border-radius: 17px;
+  cursor: pointer;
+  color: #1d1711;
+  background: linear-gradient(100deg, #ffe7aa, #efc878);
+  font-size: 1rem;
+  font-weight: 700;
+  box-shadow: 0 9px 25px rgba(25, 10, 2, .20);
+  transition: transform .2s ease, filter .2s ease, box-shadow .2s ease;
+}
+
+button:hover {
+  filter: brightness(1.04);
+  transform: translateY(-2px);
+  box-shadow: 0 13px 30px rgba(25, 10, 2, .28);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button:disabled {
+  cursor: wait;
+  opacity: .7;
+  transform: none;
+}
+
+.form-status {
+  min-height: 20px;
+  margin: 14px 0 0;
+  text-align: center;
+  font-size: .85rem;
+  font-weight: 600;
+}
+
+.form-status.success {
+  color: #ffe4a7;
+}
+
+.form-status.error {
+  color: #ffd0c2;
+}
+
+.decor {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  color: #e7b44e;
+  opacity: .92;
+  filter: drop-shadow(0 8px 14px rgba(20, 6, 1, .28));
+}
+
+.decor-left {
+  top: -45px;
+  left: -24px;
+  width: 360px;
+  height: 330px;
+  transform: rotate(-13deg);
+}
+
+.decor-right {
+  right: -28px;
+  bottom: 8px;
+  width: 390px;
+  height: 350px;
+  transform: rotate(9deg);
+}
+
+.flower {
+  position: absolute;
+  display: block;
+  color: #c56a23;
+  font-family: Georgia, serif;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, .35);
+}
+
+.flower-1 {
+  top: 10px;
+  left: 72px;
+  font-size: 126px;
+}
+
+.flower-2 {
+  top: 5px;
+  left: 178px;
+  font-size: 98px;
+}
+
+.flower-3 {
+  top: 66px;
+  left: 8px;
+  font-size: 77px;
+}
+
+.sprig {
+  position: absolute;
+  left: 95px;
+  top: 93px;
+  color: #f2ead4;
+  font-size: 195px;
+  line-height: 1;
+  opacity: .74;
+}
+
+.decor-right .flower-1 {
+  top: 106px;
+  left: 183px;
+  font-size: 132px;
+}
+
+.decor-right .flower-2 {
+  top: 164px;
+  left: 75px;
+  font-size: 94px;
+}
+
+.decor-right .flower-3 {
+  top: 76px;
+  left: 286px;
+  font-size: 75px;
+}
+
+.decor-right .sprig {
+  left: 82px;
+  top: 42px;
+  transform: scaleX(-1);
+  opacity: .7;
+}
+
+
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 700px) {
+  .rsvp-page {
+    padding: 0 16px 80px;
+  }
+
+  .hero {
+    margin-bottom: 42px;
+  }
+
+  .hero h1 {
+    font-size: clamp(3rem, 15vw, 4.4rem);
+  }
+
+  .date {
+    letter-spacing: .22em;
+    font-size: .82rem;
+  }
+
+  .rsvp-card {
+    padding: 31px 22px 30px;
+    border-radius: 22px;
+  }
+
+  .decor-left {
+    left: -120px;
+    transform: scale(.72) rotate(-13deg);
+    transform-origin: top left;
+  }
+
+  .decor-right {
+    right: -125px;
+    transform: scale(.72) rotate(9deg);
+    transform-origin: bottom right;
+  }
+
+ /* =================================
+   REAL RESPONSIVE BACK BUTTON
+   ================================= */
+
+.back-button {
+  position: fixed;
+  left: 24px;
+  bottom: 24px;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  height: 54px;
+  min-width: 120px;
+  padding: 6px 18px 6px 8px;
+
+  border: 1px solid rgba(255, 231, 183, 0.45);
+  border-radius: 999px;
+
+  color: #fff4dc;
+  background: rgba(61, 27, 14, 0.82);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
+  cursor: pointer;
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+
+/* Circle around arrow */
+
+.back-icon {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border: 1px solid rgba(255, 224, 164, 0.55);
+  border-radius: 50%;
+
+  color: #ffe6ad;
+  background: rgba(255, 225, 170, 0.10);
+
+  font-family: Georgia, serif;
+  font-size: 28px;
+  line-height: 1;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+
+/* Back text */
+
+.back-label {
+  white-space: nowrap;
+}
+
+
+/* Hover */
+
+.back-button:hover {
+  transform: translateY(-4px);
+
+  background: rgba(91, 43, 22, 0.95);
+
+  border-color: rgba(255, 231, 183, 0.75);
+
+  box-shadow:
+    0 15px 38px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+
+
+/* Move arrow */
+
+.back-button:hover .back-icon {
+  transform: translateX(-4px);
+  background: rgba(255, 225, 170, 0.18);
+}
+
+
+/* Click */
+
+.back-button:active {
+  transform: translateY(-1px) scale(0.97);
+}
+
+
+/* Keyboard focus */
+
+.back-button:focus-visible {
+  outline: 3px solid rgba(255, 225, 165, 0.75);
+  outline-offset: 4px;
+}
+
+
+/* =================================
+   TABLET
+   ================================= */
+
+@media (max-width: 900px) {
+
+  .back-button {
+    left: 20px;
+    bottom: 20px;
+  }
+
+}
+
+
+/* =================================
+   MOBILE
+   ================================= */
+
+@media (max-width: 600px) {
+
+  .back-button {
+    left: 16px;
+    bottom: 16px;
+
+    width: 52px;
+    min-width: 52px;
+    height: 52px;
+
+    padding: 5px;
+
+    justify-content: center;
+  }
+
+  .back-label {
+    display: none;
+  }
+
+  .back-icon {
+    width: 40px;
+    height: 40px;
+
+    font-size: 27px;
+  }
+
+}
+
+
+/* =================================
+   VERY SMALL PHONES
+   ================================= */
+
+@media (max-width: 380px) {
+
+  .back-button {
+    left: 12px;
+    bottom: 12px;
+
+    width: 48px;
+    min-width: 48px;
+    height: 48px;
+  }
+
+  .back-icon {
+    width: 36px;
+    height: 36px;
+
+    font-size: 24px;
+  }
+
+}

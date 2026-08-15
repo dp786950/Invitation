@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Me & You — RSVP</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Great+Vibes&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="rsvp.css" />
+</head>
+
+<body>
+
+  <main class="rsvp-page">
+
+    <div class="decor decor-left" aria-hidden="true">
+      <span class="flower flower-1">✿</span>
+      <span class="flower flower-2">✿</span>
+      <span class="flower flower-3">✿</span>
+      <span class="sprig">❧</span>
+    </div>
+
+    <div class="decor decor-right" aria-hidden="true">
+      <span class="flower flower-1">✿</span>
+      <span class="flower flower-2">✿</span>
+      <span class="flower flower-3">✿</span>
+      <span class="sprig">❧</span>
+    </div>
+
+
+    <section class="hero" aria-label="Wedding invitation">
+
+      <h1>Me &amp; You</h1>
+
+      <p class="date">
+        26 · September · 2026
+      </p>
+
+    </section>
+
+
+    <section class="rsvp-card" aria-labelledby="rsvp-title">
+
+      <div class="card-glow"></div>
+
+
+      <header class="card-header">
+
+        <h2 id="rsvp-title">
+          RSVP
+        </h2>
+
+        <p>
+          Kindly Respond by August 30, 2026
+        </p>
+
+      </header>
+
+
+      <!-- RSVP FORM -->
+      <!-- All responses will be sent to dp786950@gmail.com -->
+
+      <form
+        id="rsvpForm"
+        action="https://formsubmit.co/dp786950@gmail.com"
+        method="POST"
+      >
+
+        <!-- Email settings -->
+
+        <input
+          type="hidden"
+          name="_subject"
+          value="New Wedding RSVP"
+        />
+
+        <input
+          type="hidden"
+          name="_template"
+          value="table"
+        />
+
+        <input
+          type="hidden"
+          name="_captcha"
+          value="true"
+        />
+
+
+        <!-- Full Name -->
+
+        <div class="field">
+
+          <label
+            class="sr-only"
+            for="fullName"
+          >
+            Full Name
+          </label>
+
+          <input
+            id="fullName"
+            name="Full Name"
+            type="text"
+            placeholder="Full Name"
+            autocomplete="name"
+            required
+          />
+
+        </div>
+
+
+        <!-- Attendance -->
+
+        <div class="field select-wrap">
+
+          <label
+            class="sr-only"
+            for="attendance"
+          >
+            Attendance
+          </label>
+
+          <select
+            id="attendance"
+            name="Attendance"
+            required
+          >
+
+            <option
+              value=""
+              selected
+              disabled
+            >
+              Select Attendance
+            </option>
+
+            <option value="Joyfully Accepts">
+              Joyfully Accepts
+            </option>
+
+            <option value="Regretfully Declines">
+              Regretfully Declines
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- Number of Guests -->
+
+        <div class="field">
+
+          <label
+            class="sr-only"
+            for="guests"
+          >
+            Number of Guests
+          </label>
+
+          <input
+            id="guests"
+            name="Number of Guests"
+            type="number"
+            min="1"
+            max="10"
+            value="1"
+            inputmode="numeric"
+            required
+          />
+
+        </div>
+
+
+        <!-- Message -->
+
+        <div class="field">
+
+          <label
+            class="sr-only"
+            for="message"
+          >
+            Message / Well Wishes
+          </label>
+
+          <textarea
+            id="message"
+            name="Message / Well Wishes"
+            rows="4"
+            placeholder="Message / Well Wishes (Optional)"
+          ></textarea>
+
+        </div>
+
+
+        <!-- Submit -->
+
+        <button
+          id="submitBtn"
+          type="submit"
+        >
+          Send My RSVP
+        </button>
+
+
+        <p
+          id="formStatus"
+          class="form-status"
+          role="status"
+          aria-live="polite"
+        ></p>
+
+      </form>
+
+    </section>
+
+
+    <!-- Back Button -->
+
+    <button
+      class="back-button"
+      id="backButton"
+      type="button"
+      aria-label="Go back to the previous page"
+    >
+
+      <span
+        class="back-icon"
+        aria-hidden="true"
+      >
+        ‹
+      </span>
+
+      <span class="back-label">
+        Back
+      </span>
+
+    </button>
+
+  </main>
+
+
+  <script src="rsvp.js"></script>
+
+</body>
+</html>
